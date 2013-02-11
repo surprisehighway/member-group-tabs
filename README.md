@@ -4,7 +4,9 @@ Member Group Tabs
 The Problem
 -----------
 
-Tabs that are created in the ExpressionEngine Main Menu Manager are on a per member basis. It is time consuming when you want to create the same tab for a number of members. **This extension allows you to create navigation tabs for member groups in the ExpressionEngine control panel.** New and existing members will have access to tabs that are created for their member group.
+Tabs are custom buttons that users can create in the ExpressionEngine control panel Main Menu Manager. They're very useful, but have some limitations. Tabs are unique for each member. It is time consuming for administrators to create the same tab for a number of members. When new members are registered in the future you have to manually create those tabs for them again.
+
+**This extension allows you to create navigation tabs for entire member groups in the ExpressionEngine control panel.** All existing and future members will have access to the tabs you create for their member group.
 
 Installation
 ------------
@@ -16,7 +18,7 @@ Installation
 Usage
 -----
 
-In the ExpressionEngine control panel navigate to Modules > Extensions and click Member Group Tabs 'Settings'.
+In the ExpressionEngine control panel navigate to Add-Ons > Extensions and click Member Group Tabs 'Settings'.
 
 The Member Group Tabs settings page will list member groups that have control panel permissions.
 
@@ -39,4 +41,4 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unpor
 Support
 -------
 
-Report any issues [here](https://github.com/surprisehighway/member-group-tabs/issues).
+Report any issues on the [ExpressionEngine Answers forum](http://expressionengine.stackexchange.com/questions/ask?title=Member+Group+Tabs&tags=member-group-tabs).
