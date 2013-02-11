@@ -13,7 +13,7 @@ Installation
 
 1. Unpackage the zip file
 2. Place 'sh\_member\_group_tabs' folder in your 'system/expressionengine/third\_party' directory
-3. Enable the 'Member Group Tabs' extension in the ExpressionEngine control panel by navigating to Modules > Extensions
+3. Enable the 'Member Group Tabs' extension in the ExpressionEngine control panel by navigating to Add-Ons > Extensions
 
 Usage
 -----
