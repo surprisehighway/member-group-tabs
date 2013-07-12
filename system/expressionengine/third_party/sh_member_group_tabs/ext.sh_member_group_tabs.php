@@ -201,9 +201,52 @@ class Sh_member_group_tabs_ext {
 		{
 			// get our tabs belonging to member group
 			foreach ($this->settings['sh_member_group_tabs'][$this->EE->session->userdata['group_id']]['tabs'] as $tab_id => $tab_val)
-			{
+			{	
+
+				// fingerprint came into the picture v2.6.0
+				$session_fingerprint = (APP_VER >= '2.6.0') ? ee()->session->userdata['fingerprint'] : $this->EE->session->userdata['session_id'];
+
+				// EE 2.6 requires the admin session fingerprint on every URL in the CP
+				$fingerprint_regex = '/S=([a-zA-Z0-9]*)/';
+				$get_session_fingerprint = 'S='.$session_fingerprint;
+
+				// are we working with an absolute path?
+				$absolute_path = preg_match('/(http|https):\/\//', $tab_val['url']);
+				
+				// only mask extraterrestrial life (absolute links)
+				$masked_url = FALSE;
+
+				// absolute path
+				if ($absolute_path)
+				{
+					$masked_url = TRUE;
+				}
+				// relative path
+				else
+				{
+					// relative url - with fingerprint
+					if (preg_match($fingerprint_regex, $tab_val['url']))
+					{
+						$tab_val['url'] = preg_replace($fingerprint_regex, $get_session_fingerprint, $tab_val['url']);
+					}
+					// relative url - no fingerprint, we'll append it to the url
+					else
+					{
+						$tab_val['url'] = ($tab_val['url'] .AMP. $get_session_fingerprint);
+					}
+				}
+
+				// Serve up the tabs
 				$this->EE->lang->language['nav_sh_tab_'.$tab_id] = $tab_val['name'];
-				$menu['sh_tab_'.$tab_id] = $this->EE->cp->masked_url($tab_val['url']);
+				
+				if ($masked_url === TRUE)
+				{
+					$menu['sh_tab_'.$tab_id] = $this->EE->cp->masked_url($tab_val['url']);
+				}
+				else
+				{
+					$menu['sh_tab_'.$tab_id] = $tab_val['url'];
+				}
 			}
 		}
 
@@ -222,7 +265,9 @@ class Sh_member_group_tabs_ext {
 			$this->EE->cp->set_breadcrumb(BASE.AMP.$this->_base, $this->EE->lang->line(SH_TABS_NAME));
 		}
 
-		$this->EE->cp->set_variable('cp_page_title', $this->EE->lang->line($line));
+		// Before EE 2.6 - DECAPITATED
+		// $this->EE->cp->set_variable('cp_page_title', $this->EE->lang->line($line));
+		ee()->view->cp_page_title = $this->EE->lang->line($line);
 	}
 
 	// ----------------------------------------------------------------------

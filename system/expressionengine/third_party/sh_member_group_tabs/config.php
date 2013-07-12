@@ -8,7 +8,7 @@ if ( ! defined('SH_TABS_NAME'))
 {
 	define('SH_TABS_NAME', 'Member Group Tabs');
 	define('SH_TABS_PACKAGE', 'sh_member_group_tabs');
-	define('SH_TABS_VERSION', '1.0');
+	define('SH_TABS_VERSION', '1.2');
 	define('SH_TABS_DOCS', 'https://github.com/surprisehighway/member-group-tabs');
 }
 
