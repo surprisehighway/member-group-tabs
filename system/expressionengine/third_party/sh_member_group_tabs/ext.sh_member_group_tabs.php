@@ -265,9 +265,15 @@ class Sh_member_group_tabs_ext {
 			$this->EE->cp->set_breadcrumb(BASE.AMP.$this->_base, $this->EE->lang->line(SH_TABS_NAME));
 		}
 
-		// Before EE 2.6 - DECAPITATED
-		// $this->EE->cp->set_variable('cp_page_title', $this->EE->lang->line($line));
-		ee()->view->cp_page_title = $this->EE->lang->line($line);
+		if (APP_VER >= '2.6.0')
+		{
+			ee()->view->cp_page_title = $this->EE->lang->line($line);
+		}
+		else
+		{
+			// Before EE 2.6 - DECAPITATED
+			$this->EE->cp->set_variable('cp_page_title', $this->EE->lang->line($line));
+		}
 	}
 
 	// ----------------------------------------------------------------------
