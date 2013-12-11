@@ -197,7 +197,7 @@ class Sh_member_group_tabs_ext {
 			$menu = $this->EE->extensions->last_call;
 		}
 
-		if ( ! empty($this->settings['sh_member_group_tabs']))
+		if ( ! empty($this->settings['sh_member_group_tabs']) && array_key_exists($this->EE->session->userdata['group_id'], $this->settings['sh_member_group_tabs']))
 		{
 			// get our tabs belonging to member group
 			foreach ($this->settings['sh_member_group_tabs'][$this->EE->session->userdata['group_id']]['tabs'] as $tab_id => $tab_val)
