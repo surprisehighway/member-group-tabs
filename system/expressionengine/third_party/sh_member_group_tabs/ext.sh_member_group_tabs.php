@@ -50,7 +50,9 @@ class Sh_member_group_tabs_ext {
 		$this->EE->load->helper('form');
 		$this->EE->load->library('table');
 
-		$this->EE->cp->add_to_head('		
+		$include_js_method = (APP_VER >= '2.8') ? "add_to_foot" : "add_to_head";
+
+		$this->EE->cp->$include_js_method('		
 			<style type="text/css">
 			.mainTable .hint { font-size: 11px; padding-left: 10px; font-weight: normal; opacity: .5; }
 			</style>
