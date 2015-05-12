@@ -50,7 +50,7 @@ class Sh_member_group_tabs_ext {
 		$this->EE->load->helper('form');
 		$this->EE->load->library('table');
 
-		$include_js_method = (APP_VER >= '2.8') ? "add_to_foot" : "add_to_head";
+		$include_js_method = (version_compare(APP_VER, '2.8', '>=')) ? "add_to_foot" : "add_to_head";
 
 		$this->EE->cp->$include_js_method('		
 			<style type="text/css">
@@ -206,7 +206,7 @@ class Sh_member_group_tabs_ext {
 			{	
 
 				// fingerprint came into the picture v2.6.0
-				$session_fingerprint = (APP_VER >= '2.6.0') ? ee()->session->userdata['fingerprint'] : $this->EE->session->userdata['session_id'];
+				$session_fingerprint = (version_compare(APP_VER, '2.6.0', '>=')) ? ee()->session->userdata['fingerprint'] : $this->EE->session->userdata['session_id'];
 
 				// EE 2.6 requires the admin session fingerprint on every URL in the CP
 				$fingerprint_regex = '/S=([a-zA-Z0-9]*)/';
@@ -267,7 +267,7 @@ class Sh_member_group_tabs_ext {
 			$this->EE->cp->set_breadcrumb(BASE.AMP.$this->_base, $this->EE->lang->line(SH_TABS_NAME));
 		}
 
-		if (APP_VER >= '2.6.0')
+		if (version_compare(APP_VER, '2.6.0', '>='))
 		{
 			ee()->view->cp_page_title = $this->EE->lang->line($line);
 		}
