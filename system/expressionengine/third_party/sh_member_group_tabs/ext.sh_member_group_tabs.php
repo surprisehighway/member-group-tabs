@@ -342,6 +342,9 @@ class Sh_member_group_tabs_ext {
 		{
 			return FALSE;
 		}
+		
+		ee()->db->where('class', 'Sh_member_group_tabs_ext');
+		ee()->db->update('extensions', array('version' => $this->version));
 	}	
 	
 	// ----------------------------------------------------------------------
